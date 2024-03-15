@@ -24,7 +24,11 @@ function applyColors(element) {
 function customizeTagElements() {
     var elements = document.querySelectorAll(tagElementCssSelectors);
     if (elements.length > 0) {
-        elements.forEach(function(element) {         
+        elements.forEach(function(element) {  
+            if (element.style.backgroundColor != '') {
+                // Already styled, so skip to avoid overriding
+                return;
+            }
             applyColors(element);
         });
     }
