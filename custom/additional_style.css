@@ -1,0 +1,14 @@
+/* Custom CSS for tag elements in memos */
+.inline-block.w-auto.text-blue-600.dark\:text-blue-400.cursor-pointer.hover\:opacity-80 {
+    display: inline-block;
+    background-color: #0079bf;
+    color: white;
+    padding: 0.25em 0.6em;
+    border-radius: 8px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: bold;
+    margin-right: 5px;
+    text-decoration: none;
+}
