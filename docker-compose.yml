@@ -1,5 +1,5 @@
 # todo: this uses a foreign image, build from local repo instead
-version: "3.0"
+version: "3.1"
 services:
   memos:
     image: neosmemo/memos:stable
@@ -8,3 +8,24 @@ services:
       - ~/.memos/:/var/opt/memos
     ports:
       - 5230:5230
+    environment:
+      - MEMOS_DRIVER=postgres
+      - MEMOS_DSN=postgresql://memos_user:memos_pass@memos-db:5432/memos_db?sslmode=disable
+    depends_on:
+      - memos-db
+
+  memos-db:
+    image: 'postgres:15-alpine'
+    container_name: memos-db
+    volumes:
+        - 'memos-pg-db:/var/lib/postgresql/data'
+    environment:
+        - POSTGRES_USER=memos_user
+        - POSTGRES_PASSWORD=memos_pass
+        - POSTGRES_DB=memos_db
+    ports:
+        - '5231:5432'
+
+volumes:
+    memos-pg-db:
+      name: memos-pg-db
