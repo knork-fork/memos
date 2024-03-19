@@ -1,0 +1,2 @@
+# Optional discord webhook for log notifications
+DISCORD_WEBHOOK_URL=dummy

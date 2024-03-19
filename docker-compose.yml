@@ -26,6 +26,18 @@ services:
     ports:
         - '5231:5432'
 
+  memos-cron:
+    build: scripts/cron
+    container_name: memos-cron
+    volumes:
+      - memos-script-folder:/var/memos/script_output
+      - ./scripts/php:/var/memos/php
+      - ./scripts/cron:/var/memos/scripts
+    depends_on:
+      - memos-db
+
 volumes:
     memos-pg-db:
       name: memos-pg-db
+    memos-script-folder:
+      name: memos-script-folder
